@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Item : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] UnityEvent _destroyFeedback;
+
+    public virtual void Use(PickUpItem pui)
     {
-        
+
+        // consume bag
+
+        _destroyFeedback?.Invoke();
+        Destroy(gameObject, 3f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
